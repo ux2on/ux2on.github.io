@@ -25,6 +25,7 @@ user:
   picAlt: "catbook"
   job: Developer
   aboutme: true # comment this out if you don't need the 'about' page.
+  youremail: test@gmail.com
 
 exclude:
   - README.md
