@@ -9,13 +9,6 @@ layout: page
     {% endif %}
   </div>
 
-  <div style="text-align: left;">
-    <p>
-      <a href="https://hits.seeyoufarm.com">
-      <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url={{ site.url | remove_first: 'https://' | remove_first: 'http://' }}{{ page.url }}&count_bg=%23FFC0C0&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=HITS&edge_flat=false"/></a>
-    </p>
-  </div>
-
   <div class="post_data">
     {% if page.date %}
     <span class="post_date">{{ page.date | date: "%b %-d, %Y" }}</span>
@@ -27,11 +20,17 @@ layout: page
       {% endif %}{% endfor %}
     </span>
     {% endif %}
+
+    <div style="text-align: right;">
+        <a href="https://hits.seeyoufarm.com">
+        <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url={{ site.url | remove_first: 'https://' | remove_first: 'http://' }}{{ page.url }}&count_bg=%23FFC0C0&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=HITS&edge_flat=false"/></a>
+    </div>
+
   </div>
+
   <div class="post_content">
     {{ content }}
   </div>
-
 
   {% if page.comment %}
   <div class="post_comment">
