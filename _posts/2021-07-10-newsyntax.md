@@ -4,18 +4,23 @@ categories: [ABAP]
 comments: true
 ---
 
-<br>
+---
+
+<p>
 내가 자주 사용하는 ABAP New Syntax ᕦ( •ᗜ•)ᕤ <br>
 많이 쓸려고 노력중인데... <br>
-확실히 전 구문들보다 퍼포먼스도 잘 나오는 느낌 (?)
-<br>
-<br>
+확실히 전 구문들보다 퍼포먼스도 잘 나오는 느낌 (?)<br>
+</p>
+
+---
+
 <br>
 ```abap
 SELECT *
   FROM sflight
   INTO TABLE @DATA(lt_sflight).
 ```
+<br>
 
 ## Filter <br>
 
