@@ -1,14 +1,7 @@
 ---
-title: NEW Syntax
+title: ABAP New Syntax
 categories: [ABAP]
 comments: true
----
-
-<p>
-내가 자주 사용하는 ABAP New Syntax 모음 ᕦ( •ᗜ•)ᕤ
-
-</p>
-
 ---
 
 ```abap
@@ -36,7 +29,7 @@ DATA: lt_result TYPE TABLE OF sflight.
 lt_result = FILTER #( lt_sflight IN r_filter WHERE carrid = table_line ).
 ```
 
-<br>
+---
 
 ## CORRESPONDING <br>
 
@@ -49,7 +42,7 @@ DATA: BEGIN OF ls_result,
 lt_result = CORRESPONDING #( lt_sflight MAPPING carrid = carrid ).
 ```
 
-<br>
+---
 
 ## COND <br>
 
@@ -64,3 +57,57 @@ IF ls_sflight IS NOT INITIAL.
                                  WHEN ls_sflight-seatsmax_b > ls_sflight-seatsocc_b THEN 'LESS' ).
 ENDIF.
 ```
+
+---
+
+## SWITCH <br>
+
+```abap
+  DATA(ls_sflight) = lt_sflight[ carrid = 'JL'  connid = 0407	fldate = 20200721 ].
+ENDIF.
+
+IF ls_sflight IS NOT INITIAL.
+  DATA(lv_result) = SWITCH #( ls_sflight-currency
+                                                   WHEN 'KRW' THEN 'KOREA'
+                                                   WHEN 'USD' THEN 'US'
+                                                   WHEN 'JPY' THEN 'JAPAN' ).
+ENDIF.
+```
+
+---
+
+## VALUE <br>
+
+```abap
+TYPES: BEGIN OF ty_new,
+         field1 TYPE char10,
+         field2 TYPE char10,
+         field3 TYPE char10,
+         field4 TYPE char10,
+         field5 TYPE char10,
+       END OF ty_new.
+DATA: lt_data TYPE TABLE OF ty_new.
+
+lt_data = VALUE #(
+
+"첫번째 줄
+( field1 = '1A' field2 = '1B' field3 = '1C' field4 = '1D' field5 = '1E' )
+
+"두번째 줄
+( field1 = '2A' field2 = '2B' field3 = '2C' field4 = '2D' field5 = '2E' )
+
+  field1 = 'Fix Value'
+( field2 = '3B' field3 = '3C' field4 = '3D'  field5 = '3E' )
+( field2 = '4B' field3 = '4C' field4 = '4D'  field5 = '4E' )            ).
+```
+
+<br>
+
+#### (1) INSERT VALUE <br>
+
+```abap
+INSERT VALUE #( field1 = '5A' field2 = '5B' field3 = '5C' field4 = '5D' field5 = '5E' )
+  INTO TABLE lt_data.
+```
+
+<br>
