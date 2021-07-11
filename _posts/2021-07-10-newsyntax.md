@@ -133,8 +133,6 @@ lt_data = VALUE #(
 ( field2 = '4B' field3 = '4C' field4 = '4D'  field5 = '4E' )            ).
 ```
 
-<br>
-
 ### (1) INSERT VALUE <br>
 
 ```abap
@@ -142,4 +140,51 @@ INSERT VALUE #( field1 = '5A' field2 = '5B' field3 = '5C' field4 = '5D' field5 =
   INTO TABLE lt_data.
 ```
 
-<br>
+---
+
+## CONV <br>
+
+```abap
+DATA: lv_string TYPE string.
+lv_string = '20210107'.
+DATA(lv_dats) = CONV dats( lv_string ).
+```
+
+---
+
+## FOR <br>
+
+```abap
+DATA: lt_carrid TYPE TABLE OF s_carr_id.
+lt_carrid = VALUE #( FOR <wa> IN lt_sflight ( <wa>-carrid ) ).
+```
+
+### Sample Code <br>
+
+```abap
+SELECT carrid, carrname
+  FROM scarr
+  INTO TABLE @DATA(lt_scarr).
+
+SELECT carrid, connid, cityfrom, cityto
+  FROM spfli
+  ORDER BY carrid, connid, cityfrom, cityto
+  INTO TABLE @DATA(lt_spfli).
+
+TYPES: BEGIN OF ty_s_flight,
+         carrier     TYPE scarr-carrname,
+         number      TYPE spfli-connid,
+         departure   TYPE spfli-cityfrom,
+         destination TYPE spfli-cityto,
+       END OF ty_s_flight,
+       ty_t_flight TYPE TABLE OF ty_s_flight WITH KEY carrier.
+
+DATA(lt_result) = VALUE ty_t_flight( FOR <fs> IN lt_spfli ( carrier     = VALUE #( lt_scarr[ carrid = <fs>-carrid ] )
+                                                            number      = <fs>-connid
+                                                            departure   = <fs>-cityfrom
+                                                            destination = <fs>-cityto )   ).
+
+cl_demo_output=>display( lt_result ).
+```
+
+![lt_result](./post_img/newsyntax_for_example.png)
