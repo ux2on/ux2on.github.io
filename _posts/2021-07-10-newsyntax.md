@@ -187,4 +187,4 @@ DATA(lt_result) = VALUE ty_t_flight( FOR <fs> IN lt_spfli ( carrier     = VALUE 
 cl_demo_output=>display( lt_result ).
 ```
 
-![lt_result](./post_img/newsyntax_for_example.png)
+![lt_reuslt](/assets/post_img/newsyntax_for_example.png)
