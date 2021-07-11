@@ -4,6 +4,8 @@ categories: [ABAP]
 comments: true
 ---
 
+---
+
 ```abap
 SELECT *
   FROM sflight
@@ -44,6 +46,36 @@ lt_result = CORRESPONDING #( lt_sflight MAPPING carrid = carrid ).
 
 ---
 
+## READ TABLE <br>
+
+### (1) INDEX <br>
+
+```abap
+DATA(ls_sflight) = lt_sflight[ 1 ].
+```
+
+### (2) LINE INDEX <br>
+
+```abap
+DATA(lv_index) = line_index( lt_sflight[ carrid = 'AA' ] ).
+```
+
+### (3) WITH KEY <br>
+
+```abap
+ls_sflight = lt_sflight[ carrid = 'AA' connid = 0017 ].
+```
+
+### (4) LINE EXISTS <br>
+
+```abap
+IF line_exists( lt_sflight[ carrid = 'ZZ' ] ).
+
+ENDIF.
+```
+
+---
+
 ## COND <br>
 
 ```abap
@@ -68,9 +100,9 @@ ENDIF.
 
 IF ls_sflight IS NOT INITIAL.
   DATA(lv_result) = SWITCH #( ls_sflight-currency
-                                                   WHEN 'KRW' THEN 'KOREA'
-                                                   WHEN 'USD' THEN 'US'
-                                                   WHEN 'JPY' THEN 'JAPAN' ).
+                              WHEN 'KRW' THEN 'KOREA'
+                              WHEN 'USD' THEN 'US'
+                              WHEN 'JPY' THEN 'JAPAN' ).
 ENDIF.
 ```
 
@@ -96,14 +128,14 @@ lt_data = VALUE #(
 "두번째 줄
 ( field1 = '2A' field2 = '2B' field3 = '2C' field4 = '2D' field5 = '2E' )
 
-  field1 = 'Fix Value'
+  field1 = 'Fixed'
 ( field2 = '3B' field3 = '3C' field4 = '3D'  field5 = '3E' )
 ( field2 = '4B' field3 = '4C' field4 = '4D'  field5 = '4E' )            ).
 ```
 
 <br>
 
-#### (1) INSERT VALUE <br>
+### (1) INSERT VALUE <br>
 
 ```abap
 INSERT VALUE #( field1 = '5A' field2 = '5B' field3 = '5C' field4 = '5D' field5 = '5E' )
