@@ -1,5 +1,5 @@
 ---
-title: ABAP New Syntax
+title: 자주 쓰는 ABAP New Syntax
 categories: [ABAP]
 comments: true
 ---
@@ -188,4 +188,3 @@ cl_demo_output=>display( lt_result ).
 ```
 
 <img src = "/assets/post_img/newsyntax_for_example.png" width = "350px" >
-![lt_reuslt](/assets/post_img/newsyntax_for_example.png)
