@@ -8,7 +8,7 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
- html {
+html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -174,7 +174,8 @@ textarea {
  */
 
 button,
-input { /* 1 */
+input {
+  /* 1 */
   overflow: visible;
 }
 
@@ -184,7 +185,8 @@ input { /* 1 */
  */
 
 button,
-select { /* 1 */
+select {
+  /* 1 */
   text-transform: none;
 }
 
@@ -362,7 +364,6 @@ refer from
   width: 150px;
   margin-right: -200px;
   z-index: 10;
-  color: red;
   clear: both;
   position: -webkit-sticky;
   top: 2em;
@@ -374,13 +375,15 @@ refer from
   border: 1px solid #b6b6b6;
   border-radius: 4px;
   width: 100%;
-  font-size: .75em;
+  font-size: 0.75em;
+  opacity: 0.8;
+
   ul {
     margin: 0;
     padding: 4px;
     list-style: none;
-    color: red;
   }
+
   li {
     padding: 0px 10px;
   }
