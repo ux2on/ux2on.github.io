@@ -358,7 +358,7 @@ refer from
   display: block;
   position: sticky;
   top: 0;
-  right: -200px;
+  right: -600px;
   width: 150px;
   margin-right: -200px;
   /* padding-left: 1em; */
@@ -375,9 +375,10 @@ refer from
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.125);
   box-shadow: 0 1px 1px rgba(0,0,0,0.125);
-  width: 60%;
+  width: 100%;
   font-size: .75em;
   ul {
+    color: pink
     margin: 0;
     padding: 4px;
     list-style: none;
