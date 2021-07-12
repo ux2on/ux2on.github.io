@@ -41,6 +41,9 @@ defaults:
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 markdown: kramdown
 
+toc: true
+toc_sticky: true
+
 # Filtering Content
 show_drafts: null
 limit_posts: 0
